@@ -35,10 +35,10 @@ render() {
               <BookShelf books={this.state.Books.filter((book) => (book.shelf === "currentlyReading"))} 
               title="Currently Reading" 
               onChangeShelf={this.update_book_details}/>
-              <BookShelf books={this.state.Books.filter((book) => (book.shelf === "Read"))} 
+              <BookShelf books={this.state.Books.filter((book) => (book.shelf === "read"))} 
               title="Read" 
               onChangeShelf={this.update_book_details}/>
-              <BookShelf books={this.state.Books.filter((book) => (book.shelf === "Want to Read"))} 
+              <BookShelf books={this.state.Books.filter((book) => (book.shelf === "wantToRead"))} 
               title="Want to Read" 
               onChangeShelf={this.update_book_details}/>
             </div>
