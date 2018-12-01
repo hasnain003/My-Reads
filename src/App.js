@@ -14,6 +14,14 @@ class BooksApp extends React.Component {
       this.setState({ Books })
     })
   }
+
+  update_book_details = (book,shelf) => {
+    BooksAPI.update(book,shelf).then(() => {
+      BooksAPI.getAll().then((Books) => {
+      this.setState({ Books })
+      })
+    })
+  }
 render() {
     console.log(this.state.Books)
     return (
@@ -26,13 +34,13 @@ render() {
             <div>
               <BookShelf books={this.state.Books.filter((book) => (book.shelf === "currentlyReading"))} 
               title="Currently Reading" 
-              onChangeShelf={this.props.onChange}/>
+              onChangeShelf={this.update_book_details}/>
               <BookShelf books={this.state.Books.filter((book) => (book.shelf === "Read"))} 
               title="Read" 
-              onChangeShelf={this.props.onChange}/>
+              onChangeShelf={this.update_book_details}/>
               <BookShelf books={this.state.Books.filter((book) => (book.shelf === "Want to Read"))} 
               title="Want to Read" 
-              onChangeShelf={this.props.onChange}/>
+              onChangeShelf={this.update_book_details}/>
             </div>
           </div>
         </div>
