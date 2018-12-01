@@ -3,6 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Book from './Book.js'
 import BookShelf from './Book_Shelf.js'
+import ListBook from './List_Book'
 
 class BooksApp extends React.Component {
   state = {
@@ -26,24 +27,7 @@ render() {
     console.log(this.state.Books)
     return (
       <div className="app">
-        <div className="list-books">
-          <div className="list-books-title">
-            <h1>MyReads</h1>
-          </div>
-          <div className="list-books-content">
-            <div>
-              <BookShelf books={this.state.Books.filter((book) => (book.shelf === "currentlyReading"))} 
-              title="Currently Reading" 
-              onChangeShelf={this.update_book_details}/>
-              <BookShelf books={this.state.Books.filter((book) => (book.shelf === "read"))} 
-              title="Read" 
-              onChangeShelf={this.update_book_details}/>
-              <BookShelf books={this.state.Books.filter((book) => (book.shelf === "wantToRead"))} 
-              title="Want to Read" 
-              onChangeShelf={this.update_book_details}/>
-            </div>
-          </div>
-        </div>
+        <ListBook books={this.state.Books} update={this.update_book_details}/>
       </div>
     )
   }
