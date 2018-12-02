@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import BookShelf from './Book_Shelf.js'
 
 
@@ -34,11 +34,7 @@ class ListBook extends Component {
               			onChangeShelf={update}/>
             		</div>
           		</div>
-        	</div>
-        	<div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
             </div>
-          </div>
 		)
 	}
 }
