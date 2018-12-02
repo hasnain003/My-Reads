@@ -19,6 +19,21 @@ class BookSearch extends Component {
 		this.searchBooks(value);
 	}
 
+	changeBookShelf = (books) => {
+		const allBooks=this.props.myBooks;
+		books.map((book) => {
+			book.shelf='none'
+		})
+		for(let book of books){
+			for(let b of allBooks){
+				if(book.id === b.id){
+					book.shelf=b.shelf;
+				}
+			}
+		}
+		return books;
+	}
+
 	searchBooks = (val) => {
 		if(val.length!==0) {
 			BooksAPI.search(val,10).then((books) => {
