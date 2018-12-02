@@ -37,7 +37,7 @@ render() {
            )}/>
           <Route exact path='/search' render={(history) => (
             <BookSearch 
-            books={this.state.Books}
+            myBooks={this.state.Books}
             update={this.updateBookDetails}
             />
             )}/>
