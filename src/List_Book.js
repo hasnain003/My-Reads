@@ -14,8 +14,7 @@ class ListBook extends Component {
 
 
 	render() {
-		const books=this.props.books;
-		const update=this.props.update;
+		const { books,update } = this.props
 		return (
 			<div className="list-books">
           		<div className="list-books-title">
