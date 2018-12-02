@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import * as BookAPI from './BooksAPI'
 
 class BookSearch extends Component {
 	state = {
@@ -10,6 +11,23 @@ class BookSearch extends Component {
 	static propTypes = {
 		books : PropTypes.array.isRequired,
 		update: PropTypes.func.isRequired
+	}
+
+	searchBooks = (val) => {
+		if(val.length!==0) {
+			BooksAPI.search(val,10).then((books) => {
+				if(books.length > 0) {
+					books = books.filter((book) => (book.imageLinks))
+					books = this.changeBookShelf(books)
+					this.setState(() => {
+						return {Books : books}
+					})
+				}
+			})
+		}
+		else {
+			this.setState({Books : [],query: ''})
+		}
 	}
 
 	render() {
