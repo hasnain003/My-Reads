@@ -13,6 +13,12 @@ class BookSearch extends Component {
 		update: PropTypes.func.isRequired
 	}
 
+	handleChange = (event) => {
+		const value=event.target.value;
+		this.setState({query:value});
+		this.searchBooks(value);
+	}
+
 	searchBooks = (val) => {
 		if(val.length!==0) {
 			BooksAPI.search(val,10).then((books) => {
