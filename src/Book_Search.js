@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import * as BookAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
+import Book from './Book'
 
 class BookSearch extends Component {
 	state = {
@@ -9,7 +10,7 @@ class BookSearch extends Component {
 	}
 
 	static propTypes = {
-		books : PropTypes.array.isRequired,
+		myBooks : PropTypes.array.isRequired,
 		update: PropTypes.func.isRequired
 	}
 
@@ -51,7 +52,7 @@ class BookSearch extends Component {
 		}
 	}
 
-	addBook = (book,shelf) => {
+	updateBook = (book,shelf) => {
 		this.props.update(book,shelf)
 	}
 
@@ -66,7 +67,11 @@ class BookSearch extends Component {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+              {this.state.query.length > 0 && (this.state.Books.map((book,index) => (<Book book={book} key={index} onUpdate={(shelf) => {
+                    		this.updateBook(book,shelf)
+                    	}}/> )) )}
+              </ol>
             </div>
           </div>
 		)
