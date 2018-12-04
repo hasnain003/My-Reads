@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'
 
 
-class Book extends Component {
+class Book extends PureComponent {
 	static propTypes = {
 		book: PropTypes.object.isRequired,
 		onUpdate:PropTypes.func.isRequired
