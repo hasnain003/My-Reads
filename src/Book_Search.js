@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
 import {Link} from 'react-router-dom'
+import { Debounce } from 'react-throttle';
 
 class BookSearch extends Component {
 	state = {
@@ -65,7 +66,9 @@ class BookSearch extends Component {
            	 <div className="search-books-bar">
               <Link className="close-search" to='/'>Close</Link>
               <div className="search-books-input-wrapper">
-                <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={this.handleChange}/>
+              	<Debounce time="100" handler="onChange">
+                	<input type="text" placeholder="Search by title or author" value={this.state.query} onChange={this.handleChange}/>
+                </Debounce>
               </div>
             </div>
             <div className="search-books-results">
