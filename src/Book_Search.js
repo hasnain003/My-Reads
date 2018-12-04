@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
+import {Link} from 'react-router-dom'
 
 class BookSearch extends Component {
 	state = {
@@ -44,6 +45,8 @@ class BookSearch extends Component {
 					this.setState(() => {
 						return {Books : books}
 					})
+				}else {
+					this.setState({Books: []});
 				}
 			})
 		}
@@ -60,8 +63,7 @@ class BookSearch extends Component {
 		return(
 			<div className="search-books">
            	 <div className="search-books-bar">
-              <button className="close-search" 
-              onClick={() => this.setState({ showSearchPage: false })}>Close</button>
+              <Link className="close-search" to='/'>Close</Link>
               <div className="search-books-input-wrapper">
                 <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={this.handleChange}/>
               </div>
